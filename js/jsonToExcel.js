@@ -9,7 +9,6 @@ window.onload=function () {
     var abc={};
     // abc.data=[['sd卡分行看好了','sd卡分行看好了','sd卡分行看好了'],[1,2,3],[1,2,3]];
     abc.data=[{a:1,b:2}];
-    abc.filter=['b'];
     var a=new EcportJsonExcel(abc);
     a.saveExcel();
 };
