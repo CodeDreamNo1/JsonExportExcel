@@ -6,21 +6,22 @@
  * josn导出excel
  */
 window.onload=function () {
-    var abc={};
+    var option={};
     // abc.data=[['sd卡分行看好了','sd卡分行看好了','sd卡分行看好了'],[1,2,3],[1,2,3]];
-    abc.data=[{a:1,b:2}];
-    var a=new EcportJsonExcel(abc);
-    a.saveExcel();
+    option.data=[{one:11,two:12},{one:21,two:22}];
+    option.filter=['two','one'];
+    var toExcel=new EcportJsonExcel(option);
+    toExcel.saveExcel();
 };
 
 var EcportJsonExcel=function (option) {
-    this.data=option.data;
+    this.data=option.data || {};
     this.filter=option.filter;
     this.fileName=option.fileName || 'download';
     this.instance=function (exedata) {
         var data = exedata;
-        var ws_name = "sh";
-        console.log(data);
+        var ws_name = "sheet";
+
         var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
         ws['!merges'] = [];
         wb.SheetNames.push(ws_name);
@@ -51,7 +52,7 @@ var EcportJsonExcel=function (option) {
                     });
                     re.push(one);
                 });
-                
+
             })();
         })() : (function(){
            re= data;
