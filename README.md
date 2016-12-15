@@ -1,8 +1,7 @@
 # JsonExportExcel
 
-项目地址 https://github.com/cuikangjie/JsonExportExcel
 
-#### 使用方法
+####使用方法
 
 1.引入js
 
@@ -18,7 +17,7 @@ var option={};
 
 option.data=[{a:1,b:2},{a:2,b:3}];   
 
-var toExcel=new EcportJsonExcel(option);   
+var toExcel=new ExportJsonExcel(option);   
 
 toExcel.saveExcel();
 ```
