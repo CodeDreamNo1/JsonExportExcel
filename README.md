@@ -1,5 +1,13 @@
 # JsonExportExcel
 
+> json导出excel 支持中文
+
+> [EXAMPLE](../example/index.html)
+
+> 记得点star
+
+> by kin
+
 #### 安装方法
 ```shell
  # clone项目
@@ -32,8 +40,10 @@ toExcel.saveExcel();
 ```
 
 option
-* data 数据源    
-```javascrip
+
+* data 数据源
+
+```javascript
 <!--两种形式-->
 <!--第一种 object-->
 [{one:11,two:12},{one:21,two:22}]
@@ -42,17 +52,19 @@ option
 ```
 效果
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4048654-730785e45a006b55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](img/data.png)
 
 
 * filter 列过滤(只有在data为object下起作用)
+
 ```javascript
 option.filter=['two','one'];
+
 ```
 效果：
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/4048654-52091d93d42591eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](img/filter.png)
 
 
 * fileName 下载文件名(默认：download)

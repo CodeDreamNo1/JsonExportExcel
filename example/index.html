@@ -11,8 +11,8 @@
       window.onload=function () {
           var option={};
           // abc.data=[['sd卡分行看好了','sd卡分行看好了','sd卡分行看好了'],[1,2,3],[1,2,3]];
-          option.data=[{one:'第一',two:12},{one:21,two:22}];
-          option.filter=['two','one'];
+          option.data=[{one:'一行一列',two:'一行二列'},{one:'二行一列',two:'二行二列'}];
+          // option.filter=['two','one'];
           var toExcel=new ExportJsonExcel(option);
           toExcel.saveExcel();
       };
