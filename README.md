@@ -1,13 +1,22 @@
 # JsonExportExcel
 
+#### 安装方法
+```shell
+ # clone项目
+ git clone  https://github.com/cuikangjie/JsonExportExcel.git
+ # 下载依赖
+ npm install
+ # build dist
+ npm run build
 
-####使用方法
+```
+
+#### 使用方法
 
 1.引入js
 
 ```html
-<script src="js/xlsx.full.min.js"></script>
-<script type="text/javascript" src="js/jsonToExcel.min.js"></script>
+<script src="dist/JsonExportExcel.min.js"></script>
 ```
 
 2.js代码

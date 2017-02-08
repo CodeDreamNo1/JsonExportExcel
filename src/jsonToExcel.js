@@ -1,10 +1,9 @@
 /**
- * Created by kin on 2016/10/20.
+ * Created by kin on 2017/2/8.
+ * josn导出excel
+ * mail：cuikangjie_90h@126.com
  */
 
-/**
- * josn导出excel
- */
 (function(){
   'user static';
   var eje=function (option) {

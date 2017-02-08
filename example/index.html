@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>json导出Excel</title>
-    <script src="js/xlsx.full.min.js"></script>
-    <script type="text/javascript" src="js/jsonToExcel.js"></script>
+
+    <script type="text/javascript" src="../dist/JsonExportExcel.min.js"></script>
     <script>
       window.onload=function () {
           var option={};
           // abc.data=[['sd卡分行看好了','sd卡分行看好了','sd卡分行看好了'],[1,2,3],[1,2,3]];
-          option.data=[{one:11,two:12},{one:21,two:22}];
+          option.data=[{one:'第一',two:12},{one:21,two:22}];
           option.filter=['two','one'];
           var toExcel=new ExportJsonExcel(option);
           toExcel.saveExcel();
