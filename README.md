@@ -1,8 +1,8 @@
 # JsonExportExcel
 
-> json导出excel 支持中文
+> [json导出excel](https://cuikangjie.github.io/JsonExportExcel/) 支持中文
 
-> [EXAMPLE](../example/index.html)
+> [EXAMPLE](example/index.html)
 
 > 记得点star
 
