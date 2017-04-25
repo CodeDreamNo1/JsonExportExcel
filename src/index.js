@@ -9,43 +9,64 @@ function eje(option){
   this.filter = option.filter;
   this.fileName = option.fileName || 'download';
 }
-var Workbook = function() {
-    if (!(this instanceof Workbook)) return new Workbook();
-    this.SheetNames = [];
-    this.Sheets = {};
-};
-var s2ab = function(s) {
-    var buf = new ArrayBuffer(s.length);
-    var view = new Uint8Array(buf);
-    for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
-    return buf;
-};
-var datenum = function(v, date1904) {
-    if (date1904) v += 1462;
-    var epoch = Date.parse(v);
-    return (epoch - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000);
-};
-eje.prototype.instance=function(){
 
-  var data = this.data;
+eje.prototype.instance=function(){
+  let _this = this;
+
+  var data = _this.data;
   var ws_name = "sheet";
 
-  var wb = new Workbook(),
+  var wb = this.Workbook(),
       ws = this.sheet_from_array_of_arrays(data);
   ws['!merges'] = [];
   wb.SheetNames.push(ws_name);
   wb.Sheets[ws_name] = ws;
+  wb.SheetNames.push('two');
+  wb.Sheets['two'] = ws;
   var wbout = XLSX.write(wb, {
       bookType: 'xlsx',
       bookSST: false,
       type: 'binary'
   });
-  this.saveAs(new Blob([s2ab(wbout)], {
+  this.saveAs(new Blob([_this.s2ab(wbout)], {
       type: "application/octet-stream"
   }), this.fileName + ".xlsx")
 }
+// 过滤
+eje.prototype.changeData=function(){
+  var data  = this.data,filter = this.filter,re=[];
+  typeof this.data[0][0] == 'undefined' ? (function() {
+      //对象
+      filter ? (function() {
+          //存在过滤
+          data.forEach(function(obj) {
+              var one = [];
+              filter.forEach(function(no) {
+                  one.push(obj[no]);
+              });
+              re.push(one);
+          });
+      })() : (function() {
+          //不存在过滤
+          data.forEach(function(obj) {
+              var col = Object.keys(obj);
+              var one = [];
+              col.forEach(function(no) {
+                  one.push(obj[no]);
+              });
+              re.push(one);
+          });
+
+      })();
+  })() : (function() {
+      re = data;
+  })();
+  this.data = re;
+}
+
 // 转换数据
 eje.prototype.sheet_from_array_of_arrays=function(data){
+  var _this = this;
   var ws = {};
   var range = {
       s: {
@@ -77,7 +98,7 @@ eje.prototype.sheet_from_array_of_arrays=function(data){
           else if (cell.v instanceof Date) {
               cell.t = 'n';
               cell.z = XLSX.SSF._table[14];
-              cell.v = datenum(cell.v);
+              cell.v = _this.datenum(cell.v);
           } else cell.t = 's';
           ws[cell_ref] = cell;
       }
@@ -85,37 +106,36 @@ eje.prototype.sheet_from_array_of_arrays=function(data){
   if (range.s.c < 10000000) ws['!ref'] = XLSX.utils.encode_range(range);
   return ws;
 }
-// 过滤
-eje.prototype.changeData=function(){
-  var data  = this.data,filter = this.filter,re=[];
-  typeof this.data[0][0] == 'undefined' ? (function() {
-      //对象
-      this.filter ? (function() {
-          //存在过滤
-          data.forEach(function(obj) {
-              var one = [];
-              filter.forEach(function(no) {
-                  one.push(obj[no]);
-              });
-              re.push(one);
-          });
-      })() : (function() {
-          //不存在过滤
-          data.forEach(function(obj) {
-              var col = Object.keys(obj);
-              var one = [];
-              col.forEach(function(no) {
-                  one.push(obj[no]);
-              });
-              re.push(one);
-          });
 
-      })();
-  })() : (function() {
-      re = data;
-  })();
-  this.data = re;
-}
+eje.prototype.Workbook=  function() {
+  return {
+    SheetNames:[],
+    Sheets:{}
+  }
+    //
+    // if (!(this instanceof Workbook)) return new Workbook();
+    // this.SheetNames = [];
+    // this.Sheets = {};
+};
+eje.prototype.s2ab = function(s) {
+    var buf = new ArrayBuffer(s.length);
+    var view = new Uint8Array(buf);
+    for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+};
+eje.prototype.datenum = function(v, date1904) {
+    if (date1904) v += 1462;
+    var epoch = Date.parse(v);
+    return (epoch - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000);
+};
+
+
+eje.prototype.saveExcel = function() {
+    this.changeData();
+    this.instance();
+};
+
+// saveAs 不支持ie10以下
 eje.prototype.saveAs=(typeof navigator !== "undefined" &&
       navigator.msSaveOrOpenBlob && navigator.msSaveOrOpenBlob.bind(navigator))
   // Everyone else
@@ -376,9 +396,4 @@ eje.prototype.saveAs=(typeof navigator !== "undefined" &&
       this.content
 ));
 
-
-eje.prototype.saveExcel = function() {
-    this.changeData();
-    this.instance();
-};
 window.ExportJsonExcel = eje;
