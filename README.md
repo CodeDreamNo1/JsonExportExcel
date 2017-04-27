@@ -98,7 +98,9 @@ toExcel.saveExcel();
 
 ## 赞助
   >您的赞助是我持续更新的动力
-  ![Paste_Image.png](img/weixin.png)
+
+  <img src="./img/weixin.png" width = "250" height = "300" alt="Paste_Image.png" align=center />
+
 
 ## log
 
