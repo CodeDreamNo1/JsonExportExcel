@@ -96,6 +96,10 @@ toExcel.saveExcel();
 ## 浏览器支持
   > ie 10+
 
+## 赞助
+  >您的赞助是我持续更新的动力
+  ![Paste_Image.png](img/weixin.png)
+
 ## log
 
 - 2017.4.27
