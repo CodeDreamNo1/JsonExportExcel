@@ -112,5 +112,3 @@ toExcel.saveExcel();
   >优化代码
 
   >支持safiri浏览器
-
-> 如有问题和bug 请发送邮件到 cuikangjie_90h@126.com 联系我
