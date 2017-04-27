@@ -8,7 +8,7 @@
 
     <!-- <script type="text/javascript" src="../dist/JsonExportExcel.min.js"></script> -->
     <script type="text/javascript" src="../node_modules/xlsx/dist/xlsx.core.min.js"></script>
-    <script type="text/javascript" src="../src/index.js"></script>
+    <script type="text/javascript" src="../src/jsonToExcel.js"></script>
     <script>
       window.onload=function () {
           var option={};
@@ -24,9 +24,6 @@
               sheetFilter:['two','one'],
               sheetHeader:['第一列','第二列'],
 
-            },
-            {
-              sheetData:[{one:'一行一列',two:'一行二列'},{one:'二行一列',two:'二行二列'}]
             }
           ];
           var toExcel=new ExportJsonExcel(option);
