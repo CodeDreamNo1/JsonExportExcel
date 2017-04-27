@@ -97,9 +97,8 @@ toExcel.saveExcel();
   > ie 10+
 
 ## 赞助
-  >您的赞助是我持续更新的动力
 
-  <img src="./img/weixin.png" width = "250" height = "300" alt="Paste_Image.png" align=center />
+  <img src="./img/weixin2.png" width = "250" height = "300" alt="Paste_Image.png" />
 
 
 ## log
