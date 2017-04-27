@@ -8,20 +8,16 @@
 
 > by kin
 
-#### 安装方法
-```shell
- # clone项目
- git clone  https://github.com/cuikangjie/JsonExportExcel.git
- # 下载依赖
- npm install
- # build dist
- npm run build
+## 安装方法
 
+```shell
+# clone项目
+ git clone  https://github.com/cuikangjie/JsonExportExcel.git
 ```
 
-#### 使用方法
+## 使用方法
 
-1.引入js
+1.引入js (dist目录下JsonExportExcel.min.js)
 
 ```html
 <script src="dist/JsonExportExcel.min.js"></script>
@@ -29,42 +25,78 @@
 
 2.js代码
 
-```javascript  
-var option={};   
+```javascript
+var option={};
 
-option.data=[{a:1,b:2},{a:2,b:3}];   
-
-var toExcel=new ExportJsonExcel(option);   
-
+option.fileName = 'excel'
+option.datas=[
+  {
+    sheetData:[{one:'一行一列',two:'一行二列'},{one:'二行一列',two:'二行二列'}],
+    sheetName:'sheet',
+    sheetFilter:['two','one'],
+    sheetHeader:['第一列','第二列']
+  },
+  {
+    sheetData:[{one:'一行一列',two:'一行二列'},{one:'二行一列',two:'二行二列'}]
+  }
+];
+var toExcel=new ExportJsonExcel(option);
 toExcel.saveExcel();
 ```
 
-option
+## option
 
-* data 数据源
+- datas 数据
 
-```javascript
-<!--两种形式-->
-<!--第一种 object-->
-[{one:'一行一列',two:'一行二列'},{one:'二行一列',two:'二行二列'}]
-<!--第二种 arrary-->
-[['一行一列','一行二列'],['二行一列','二行二列']]
-```
-效果
+  ```
+  /*多个sheet*/
+  /*每个sheet为一个object */
+  [{
+  sheetData:[], // 数据
+  sheetName:'', // sheet名字
+  sheetFilter:[], //列过滤
+  sheetHeader:[] // 第一行
+  }]
+  ```
 
-![Paste_Image.png](img/data.png)
+- fileName 下载文件名(默认：download)
+
+### sheet option
+
+- sheetName sheet名字(可有可无)(默认sheet1)
+
+- sheetHeader 标题（excel第一行数据）
+
+  ```javascript
+  sheetHeader:['第一列','第二列']
+  ```
+
+- sheetData 数据源(必须)
+
+  ```javascript
+  <!--两种形式-->
+  <!--第一种 object-->
+  [{one:'一行一列',two:'一行二列'},{one:'二行一列',two:'二行二列'}]
+  <!--第二种 arrary-->
+  [['一行一列','一行二列'],['二行一列','二行二列']]
+  ```
 
 
-* filter 列过滤(只有在data为object下起作用)
 
-```javascript
-option.filter=['two','one'];
+- sheetFilter 列过滤(只有在data为object下起作用)(可有可无)
 
-```
-效果：
+  ```javascript
+  sheetFilter=['two','one'];
 
+  ```
 
-![Paste_Image.png](img/filter.png)
+## 效果预览
+   ![Paste_Image.png](img/data.png)
 
+## log
 
-* fileName 下载文件名(默认：download)
+- 2017.4.27
+
+  > 增加标题配置
+
+  >增加多个sheet功能

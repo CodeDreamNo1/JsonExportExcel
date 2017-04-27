@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 gulp.task('build', function() {
-  return gulp.src(['src/**/*.js','node_modules/xlsx/**/xlsx.core.min.js'])
+  return gulp.src(['src/**/jsonToExcel.js','node_modules/xlsx/**/xlsx.core.min.js'])
       .pipe(concat('JsonExportExcel.js'))
       .pipe(uglify({
             preserveComments: 'license' //保留所有注释
