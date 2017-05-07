@@ -17,6 +17,7 @@
 
 ## 使用方法
 
+
 1.引入js (dist目录下JsonExportExcel.min.js)
 
 ```html
@@ -98,8 +99,9 @@ toExcel.saveExcel();
 
 ## 赞助
 
-  <img src="./img/weixin2.png" width = "250" height = "300" alt="Paste_Image.png" />
+  <img src="./img/weixin2.jpg" width = "250" height = "300" alt="Paste_Image.png" />
 
+> 请我喝杯咖啡 ￥28
 
 ## log
 
