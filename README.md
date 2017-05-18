@@ -4,6 +4,8 @@
 
 > [EXAMPLE](example/index.html)
 
+> es6请查看[js-export-excel](https://github.com/cuikangjie/js-export-excel)版本
+
 > 记得点star
 
 > by kin
