@@ -99,11 +99,6 @@ toExcel.saveExcel();
 ## 浏览器支持
   > ie 10+
 
-## 赞助
-
-  <img src="./img/weixin2.jpg" width = "250" height = "300" alt="Paste_Image.png" />
-
-> 请我喝杯咖啡 ￥28
 
 ## log
 
